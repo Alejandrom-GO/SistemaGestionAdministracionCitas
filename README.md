@@ -22,7 +22,6 @@ Mejorar el proceso de agendación de citas en las diferentes áreas y procesos a
 * En caso de haber error o inconveniente, la cita se podrá eliminar
 * El propietario de la cita podrá obtener un registro en donde se le indique el día, la hora y el lugar en donde será citado
 * Las áreas podrán visualizar las solicitudes de cita
-* Las áreas podrán determinar el día, la hora y el lugar en donde se agendará la cita
 * Las áreas podrán eliminar cancelar una cita ya establecida
 
 
