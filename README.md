@@ -1,2 +1,11 @@
-# Sistema de Gestion y Administracion de Citas
-Este sistema se encargara de la administración y gestion de citas del cuerpo estudiantil universitario, el cual tiene como objetivo la reducción de aglomeraciones  en los diferentes procesos administrativos de la institución educativa superior.
+#Sistema de Gestión y Administración de Citas (SGAC)
+*Este sistema es el encargado de la administración de citas del cuerpo estudiantil universitario. *
+
+##Colaboradores 💻
+- Miguel Alejandro Gutierrez Ortega.
+- Daniela Marquez Galindo.
+- Armando Muñoz Hernandez.
+- María Isabel Pérez Mendoza.
+
+##Objetivo del proyecto 📋
+Mejorar el proceso de agendación de citas en las diferentes áreas y procesos administrativos de la Universidad Tecnológica de Xicotepec de Juárez, para evitar aglomeraciones en la institución educativa.
