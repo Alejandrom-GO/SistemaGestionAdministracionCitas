@@ -17,7 +17,6 @@ Mejorar el proceso de agendación de citas en las diferentes áreas y procesos a
 
 ### Funcionalidades ⌨️
 
-```
 * Los usuarios podrán logearse para de esta manera tener sincronización entre la cita y la persona que a realizado dicha cita
 * Se podrá crear una cita para que de esta manera los alumnos hagan un espacio para tratar los asuntes pertinentes con las partes involucradas
 * En caso de haber error o inconveniente, la cita se podrá eliminar
@@ -25,7 +24,7 @@ Mejorar el proceso de agendación de citas en las diferentes áreas y procesos a
 * Las áreas podrán visualizar las solicitudes de cita
 * Las áreas podrán determinar el día, la hora y el lugar en donde se agendará la cita
 * Las áreas podrán eliminar cancelar una cita ya establecida
-```
+
 
 ## Entornos de desarrollo 🛠️
 1. FrontEnd:
