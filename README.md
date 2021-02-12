@@ -11,7 +11,7 @@ _Este sistema se encargará de la administración de citas del cuerpo estudianti
 Mejorar el proceso de agendación de citas en las diferentes áreas y procesos administrativos de la Universidad Tecnológica de Xicotepec de Juárez, para evitar aglomeraciones en la institución educativa.
 
 ## Tipos de usuario 👥
-* *Alumno.* Este usuario podrá agendar una cita a cualquier área administrativa de la institución.
-* *Administrador.* Este se encargará de gestionar y manipular la información del sistema.
-* *Administrador de Área.* Este usuario podrá cambiar el estatus de las citas a confirmada, finalizada o cancelada.
+* **Alumno.** Este usuario podrá agendar una cita a cualquier área administrativa de la institución.
+* **Administrador.** Este se encargará de gestionar y manipular la información de todo el sistema.
+* **Administrador de Área.** Este usuario podrá cambiar el estatus de las citas a confirmada, finalizada o cancelada.
 
