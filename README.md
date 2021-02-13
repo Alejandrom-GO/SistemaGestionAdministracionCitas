@@ -24,12 +24,12 @@ Mejorar el proceso de agendación de citas en las diferentes áreas y procesos a
 * Las áreas podrán visualizar las solicitudes de cita.
 * Las áreas podrán cambiar el estatus de una cita ya establecida.
 
-
 ## Entornos de desarrollo 🛠️
 1. FrontEnd:
     - _Angular._ Se utilizará este framework para la creación de un sistema basado en MVC (Modelo, Vista, Controlador).
-    - _Bootstrap._ A través de este framework, se dará diseño a la interfaz del sistema.
-
+    - _Bootstrap._ A través de este framework, se dará diseño a la interfaz del sistema.  
+    - _CSS3._ Se implementará esta tecnología para complementar los estilos del sistema.  
+    
 2. BackEnd:
     - _TypeScript._ Por medio de este, se codificará la lógica del proyecto, ya que gracias al framework de Angular se hará uso del modelo, vista, controlador.
 
