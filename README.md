@@ -1,38 +1,27 @@
-# Sistema de Gestión y Administración de Citas (SGAC)
-_Este sistema se encargará de la administración de citas del cuerpo estudiantil universitario._
+# AngularSGAC
 
-## Colaboradores 💻
-* Miguel Alejandro Gutierrez Ortega.
-* Daniela Marquez Galindo.
-* Armando Muñoz Hernandez.
-* María Isabel Pérez Mendoza.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
 
-## Objetivo del proyecto 📋
-Mejorar el proceso de agendación de citas en las diferentes áreas y procesos administrativos de la Universidad Tecnológica de Xicotepec de Juárez, para evitar aglomeraciones en la institución educativa.
+## Development server
 
-## Tipos de usuario 👥
-* **Alumno.** Este usuario podrá agendar una cita a cualquier área administrativa de la institución.
-* **Administrador.** Este se encargará de gestionar y manipular la información de todo el sistema.
-* **Administrador de Área.** Este usuario podrá cambiar el estatus de las citas a confirmada, finalizada o cancelada.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### Funcionalidades ⌨️
+## Code scaffolding
 
-* Identificación de usuarios mediante un inicio de sesión.
-* Se podrá crear una cita para que de esta manera los alumnos hagan un espacio para tratar los asuntos pertinentes con las partes involucradas.
-* En caso de haber error o inconveniente, la cita se podrá eliminar.
-* El propietario de la cita podrá obtener un registro en donde se le indique el día, la hora y el lugar en donde será citado.
-* Las áreas podrán visualizar las solicitudes de cita.
-* Las áreas podrán cambiar el estatus de una cita ya establecida.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Entornos de desarrollo 🛠️
-1. FrontEnd:
-    - _Angular._ Se utilizará este framework para la creación de un sistema basado en MVC (Modelo, Vista, Controlador).
-    - _Bootstrap._ A través de este framework, se dará diseño a la interfaz del sistema.  
-    - _CSS3._ Se implementará esta tecnología para complementar los estilos del sistema.  
-    
-2. BackEnd:
-    - _TypeScript._ Por medio de este, se codificará la lógica del proyecto, ya que gracias al framework de Angular se hará uso del modelo, vista, controlador.
+## Build
 
-3. Base de Datos:
-    - _Cloud Firestore_ Usaremos este tipo de base de datos NoSQL por medio de la plataforma Firebase, pues esta nos brindará funcionalidades adicionales al desarrollo de nuestro proyecto.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
