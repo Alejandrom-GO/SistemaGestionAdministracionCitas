@@ -3,7 +3,7 @@ _Este sistema es el encargado de la administración de citas del cuerpo estudian
 
 ## Colaboradores 💻
 * [Miguel Alejandro Gutierrez Ortega.](https://github.com/Alejandrom-GO)
-* [Daniela Marquez Galindo.](https://github.com/dmarquezg)
+* [Daniela Márquez Galindo.](https://github.com/dmarquezg)
 * [Armando Muñoz Hernandez.](https://github.com/armandomuozh01)
 * [María Isabel Pérez Mendoza.](https://github.com/mendozaIsabel)
 
