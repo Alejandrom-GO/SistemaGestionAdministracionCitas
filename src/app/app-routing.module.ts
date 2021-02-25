@@ -13,7 +13,8 @@ const routes: Routes = [
   {path: 'panelArea', component: PanelAdminAreaComponent},
   {path: 'panelUser', component: PanelUserComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'generaCita', component: GenerarCitaComponent}
+  {path: 'generaCita', component: GenerarCitaComponent},
+  {path: '**', redirectTo: 'login' , pathMatch: 'full'}
 
 
 ];
