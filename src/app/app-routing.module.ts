@@ -1,19 +1,23 @@
+import { IsUserGuard } from './shared/guards/is-user.guard';
+import { IsAdminGuard } from './shared/guards/is-admin.guard';
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { PanelAdminComponent } from './components/panel-admin/panel-admin.component';
-import { PanelAdminAreaComponent } from './components/panel-admin-area/panel-admin-area.component';
-import { PanelUserComponent } from './components/panel-user/panel-user.component';
-import { LoginComponent } from './components/login/login.component';
-import { GenerarCitaComponent } from './components/generar-cita/generar-cita.component';
+import { CheckloginGuard } from './shared/guards/checklogin.guard';
 
 const routes: Routes = [
-  {path: 'panelAdmin', component: PanelAdminComponent},
-  {path: 'panelArea', component: PanelAdminAreaComponent},
-  {path: 'panelUser', component: PanelUserComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'generaCita', component: GenerarCitaComponent},
+
+
+  { path: 'homeUser', loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule),
+  canActivate: [ IsUserGuard] },
+  { path: 'homeAdmin', loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule),
+  canActivate: [ IsAdminGuard]  },
+  { path: 'homeArea', loadChildren: () => import('./pages/admin-area/admin-area.module').then(m => m.AdminAreaModule) },
+  { path: 'notFound', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule) },
+  { path: 'login', loadChildren: () => import('./pages/auth/login/login.module').then(m => m.LoginModule),canActivate: [CheckloginGuard]},
+
+
+  { path: 'formCita', loadChildren: () => import('./pages/form-cita/form-cita.module').then(m => m.FormCitaModule) },
   {path: '**', redirectTo: 'login' , pathMatch: 'full'}
 
 

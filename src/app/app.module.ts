@@ -1,28 +1,25 @@
-import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PanelAdminComponent } from './components/panel-admin/panel-admin.component';
-import { PanelAdminAreaComponent } from './components/panel-admin-area/panel-admin-area.component';
-import { PanelUserComponent } from './components/panel-user/panel-user.component';
-import { LoginComponent } from './components/login/login.component';
-import { GenerarCitaComponent } from './components/generar-cita/generar-cita.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DatesInterceptor } from './shared/interceptors/dates.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PanelAdminComponent,
-    PanelAdminAreaComponent,
-    PanelUserComponent,
-    LoginComponent,
-    GenerarCitaComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: DatesInterceptor, multi: true }
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
