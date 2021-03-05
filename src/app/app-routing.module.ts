@@ -14,9 +14,7 @@ const routes: Routes = [
   canActivate: [ IsAdminGuard]  },
   { path: 'homeArea', loadChildren: () => import('./pages/admin-area/admin-area.module').then(m => m.AdminAreaModule) },
   { path: 'notFound', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule) },
-  { path: 'login', loadChildren: () => import('./pages/auth/login/login.module').then(m => m.LoginModule),canActivate: [CheckloginGuard]},
-
-
+  { path: 'login', loadChildren: () => import('./pages/auth/login/login.module').then(m => m.LoginModule), canActivate: [CheckloginGuard]},
   { path: 'formCita', loadChildren: () => import('./pages/form-cita/form-cita.module').then(m => m.FormCitaModule) },
   {path: '**', redirectTo: 'login' , pathMatch: 'full'}
 

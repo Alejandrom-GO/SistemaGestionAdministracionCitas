@@ -10,6 +10,9 @@ import { FormCitaComponent } from './form-cita.component';
   imports: [
     CommonModule,
     FormCitaRoutingModule
+  ],
+  exports: [
+    FormCitaComponent
   ]
 })
 export class FormCitaModule { }

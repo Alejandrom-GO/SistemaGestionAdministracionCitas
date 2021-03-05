@@ -10,7 +10,7 @@ export class DatesController {
     let dates;
 
     try {
-      dates = await datesRepository.find();
+      dates = await datesRepository.find({relations:["user"]});
     } catch (e) {
       res.status(404).json({ message: 'Somenthing goes wrong dates error!' });
     }

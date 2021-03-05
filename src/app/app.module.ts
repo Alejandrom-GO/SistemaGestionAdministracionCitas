@@ -1,3 +1,6 @@
+import { UserModule } from './pages/user/user.module';
+import { LoginModule } from './pages/auth/login/login.module';
+import { AdminModule } from './pages/admin/admin.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';

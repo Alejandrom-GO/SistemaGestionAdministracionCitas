@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { UsersService } from '../user/services/users.service';
 
@@ -9,9 +9,12 @@ import { UsersService } from '../user/services/users.service';
 })
 export class FormCitaComponent implements OnInit {
 
+  @Input() res: any = [];
+
  
 
   ngOnInit(): void {
+    console.log(this.res);
   }
 
 }

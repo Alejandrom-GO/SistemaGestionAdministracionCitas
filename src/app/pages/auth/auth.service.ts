@@ -7,7 +7,6 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { UserResponse, User, Roles } from '../../shared/models/user.interface';
 import { catchError, map } from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
 
 const helper = new JwtHelperService();
 
@@ -17,7 +16,7 @@ const helper = new JwtHelperService();
 export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(false);
   private role = new BehaviorSubject<Roles>(null);
-  private user = new BehaviorSubject<string>(null);
+  private userToken = new BehaviorSubject<string>(null);
 
   constructor(private http: HttpClient, private router: Router) {
     this.checkToken();
@@ -31,8 +30,8 @@ export class AuthService {
     return this.role.asObservable();
   }
 
-  get user$(): string {
-    return this.user.getValue();
+  get userTokenValue$(): string {
+    return this.userToken.getValue();
   }
 
   login(authData: User): Observable<UserResponse | void> {
@@ -42,7 +41,7 @@ export class AuthService {
         this.saveStorage(res);
         this.loggedIn.next(true);
         this.role.next(res.role);
-        this.user.next(res.token);
+        this.userToken.next(res.token);
         return res;
         }),
         catchError((err) => this.handlerError(err))
@@ -51,6 +50,8 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('user');
     this.loggedIn.next(false);
+    this.role.next(null);
+    this.userToken.next(null);
     this.router.navigate(['/login']);
 
     // set userisLogged = false
@@ -65,13 +66,13 @@ export class AuthService {
       }else{
         this.loggedIn.next(true);
         this.role.next(user.role);
-        this.user.next(user.token);
+        this.userToken.next(user.token);
       }
     }
   }
   private saveStorage(user: UserResponse): void {
   // localStorage.setItem('token', token);
-    const {userId, message, ... rest} = user;
+    const { message, ... rest} = user;
     localStorage.setItem('user', JSON.stringify(rest));
   }
   private handlerError(err): Observable<never> {

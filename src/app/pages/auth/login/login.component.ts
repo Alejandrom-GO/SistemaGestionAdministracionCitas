@@ -41,12 +41,14 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.router.navigate(['homeAdmin']);
       }else if (res && userRole.role === 'user'){
         this.router.navigate(['homeUser']);
+      }else if (res && userRole.role === 'adminArea'){
+        this.router.navigate(['homeArea']);
       }
     }
     )
     );
   }
-getErrorMessage(field: string){
+  getErrorMessage(field: string){
   let message;
   if(this.loginForm.get(field).errors.required){
     message = "El campo es requerido";
