@@ -10,6 +10,11 @@ _Este sistema es el encargado de la administración de citas del cuerpo estudian
 ## Objetivo del proyecto 📋
 Mejorar el proceso de agendación de citas en las diferentes áreas y procesos administrativos de la Universidad Tecnológica de Xicotepec de Juárez, para agilizar y automatizar el proceso, evitando aglomeraciones en la institución educativa.
 
+## Tipos de usuario 👥
+**Alumno.** Este usuario podrá agendar una cita a cualquier área administrativa de la institución.
+**Administrador.** Este se encargará de gestionar y manipular la información de todo el sistema.
+**Administrador de Área.** Este usuario podrá cambiar el estatus de las citas a confirmada, finalizada o cancelada.
+
 ## Funcionalidades ⌨️
 * Identificación de usuarios mediante un inicio de sesión.
 * Se podrá crear una cita para que de esta manera los alumnos hagan un espacio para tratar los asuntos pertinentes con las partes involucradas.
@@ -27,33 +32,33 @@ Mejorar el proceso de agendación de citas en las diferentes áreas y procesos a
     - _Node.js v12.16.2._ Este entorno de ejecución multiplataforma de código abierto basado en la capa del servidor del lenguaje de programación JavaScript, se utilizará como servidor del sistema. 
     - _TypeScript v4.1.5._ Por medio de este, se codificará la lógica del proyecto, ya que gracias al framework de Angular se hará uso del modelo, vista, controlador.
 3. Base de Datos:
-    - _MySQL 8.0.20._ Usaremos el tipo de base de datos SQL, pues esta nos brindará funcionalidades adicionales al desarrollo de nuestro proyecto y se adaptará adecuadamente al tipo de proyecto. 
+    - _MySQL v8.0.20._ Usaremos el tipo de base de datos SQL, pues esta nos brindará funcionalidades adicionales al desarrollo de nuestro proyecto y se adaptará adecuadamente al tipo de proyecto. 
 
 ## Wireframe 📌
 > Inicio de sesión.
 
-![](https://github.com/Alejandrom-GO/SistemaGestionAdministracionCitas/blob/main/src/assets/img/wireframe1.jpg)
+![image](https://drive.google.com/uc?export=view&id=1ORNiQB-TPporl1NtMmNUE346sN6znrmW)
 
 > Formulario para agendación de citas.
 
-![](https://github.com/Alejandrom-GO/SistemaGestionAdministracionCitas/blob/main/src/assets/img/wireframe2.jpg)
+![image](https://drive.google.com/uc?export=view&id=1_S8ush6yEWtA9cuws8uYq6iYmpISb1y7)
 
 > Listado de citas.
 
-![](https://github.com/Alejandrom-GO/SistemaGestionAdministracionCitas/blob/main/src/assets/img/wireframe3.jpg)
+![image](https://drive.google.com/uc?export=view&id=1aAxq5x-C5sSiHjXuh_lU5XUU_Edk8zF7)
 
 > Panel administrativo por área.
 
-![](https://github.com/Alejandrom-GO/SistemaGestionAdministracionCitas/blob/main/src/assets/img/wireframe4.jpg)
+![image](https://drive.google.com/uc?export=view&id=1xL_NoQ4eENbZnJFqY-bbkJ0TP7uJqk9g)
 
 > Panel administrativo de todo el sistema. 
 
-![](https://github.com/Alejandrom-GO/SistemaGestionAdministracionCitas/blob/main/src/assets/img/wireframe5.jpg)
+![image](https://drive.google.com/uc?export=view&id=1GROqeZtBbgYoI2CCtdwP9r67MT79hkU4)
 
 ## Diseño de Base de Datos 📑
 
-![](https://github.com/Alejandrom-GO/SistemaGestionAdministracionCitas/blob/main/src/assets/img/diagramaReacional.jpg)
+![image](https://drive.google.com/uc?export=view&id=1R8g-mj8ElMKDlTFOdwoyHCUrFjZnzEUI)
 
 ## Backend ⚙️
 
-![](https://github.com/Alejandrom-GO/SistemaGestionAdministracionCitas/blob/main/src/assets/img/backend.jpg)
+![image](https://drive.google.com/uc?export=view&id=1MF6n5P9UTbkY0R-cvYGkiPCgwNelruVv)
