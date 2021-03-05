@@ -1,55 +1,20 @@
-<div class="sidebar-container">
-    <div class="sidebar-logo">
-        Panel Usuario
-    </div>
-    <ul class="sidebar-navigation">
-        <li class="header">MENU</li>
-        <li>
-            <a [routerLink]="['/homeAdmin']">
-                Citas
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                Crear Cita
-            </a>
-        </li>
-
-        <br><br>
-        <hr>
-        <li>
-            <a href="#">
-                Cerrar Sesion
-            </a>
-        </li>
-    </ul>
-    <div class="copy">&copy;UTXJ</div>
-</div>
-
-<div class="content-container">
-    <!-- Main component for a primary marketing message or call to action -->
-    <div class="container">
-        <form>
-
-            <h2 class="titles">Agendar Cita</h2>
-            <hr>
-
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="inputMatricula">Matrícula:</label>
-                    <input type="number" class="form-control" id="inputMatricula" placeholder="Ingrese su matrícula">
-                </div>
-                <div class="form-group col-md-8">
-                    <label for="inputNombre">Nombre:</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputFecha">Fecha:</label>
-                    <input type="date" class="form-control" id="inputFecha">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputHorario">Horario:</label>
-                    <select class="form-control" id="inputHorario">
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputMatricula">Matrícula:</label>
+            <input type="number" class="form-control" id="inputMatricula" placeholder="Ingrese su matrícula" value="res">
+        </div>
+        <div class="form-group col-md-8">
+            <label for="inputNombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputFecha">Fecha:</label>
+            <input type="date" class="form-control" id="inputFecha">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputHorario">Horario:</label>
+            <select class="form-control" id="inputHorario">
                         <option>9:00 a.m.</option>
                         <option>9:30 a.m.</option>
                         <option>10:00 a.m.</option>
@@ -61,12 +26,12 @@
                         <option>2:00 a.m.</option>
                         <option>2:30 a.m.</option>
                     </select>
-                </div>
-            </div>
+        </div>
+    </div>
 
-            <div class="form-group">
-                <label for="inputArea">Área a la que agenda cita:</label>
-                <select class="form-control" id="inputArea">
+    <div class="form-group">
+        <label for="inputArea">Área a la que agenda cita:</label>
+        <select class="form-control" id="inputArea">
                     <option>Ádministración y Finanzas</option>
                     <option>Extensión y Vinculación</option>
                     <option>Servicios Escolares</option>
@@ -77,16 +42,10 @@
                     <option>Emprendimiento y Desarollo</option>
                     <option>Actividades Deportivas</option>
                 </select>
-            </div>
-
-            <div class="form-group">
-                <label for="inputDescripcion">Detalles de la cita:</label>
-                <textarea class="form-control" id="inputDescripcion" placeholder="Describanos el detalle de su cita"></textarea>
-            </div>
-
-            <div class="text-center">
-                <button type="submit" class="btn btn-success">Agendar</button>
-            </div>
-        </form>
     </div>
-</div>
+
+    <div class="form-group">
+        <label for="inputDescripcion">Detalles de la cita:</label>
+        <textarea class="form-control" id="inputDescripcion" placeholder="Describanos el detalle de su cita"></textarea>
+    </div>
+</form>
