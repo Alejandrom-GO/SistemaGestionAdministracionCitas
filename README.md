@@ -11,9 +11,9 @@ _Este sistema es el encargado de la administración de citas del cuerpo estudian
 Mejorar el proceso de agendación de citas en las diferentes áreas y procesos administrativos de la Universidad Tecnológica de Xicotepec de Juárez, para agilizar y automatizar el proceso, evitando aglomeraciones en la institución educativa.
 
 ## Tipos de usuario 👥
-**Alumno.** Este usuario podrá agendar una cita a cualquier área administrativa de la institución.
-**Administrador.** Este se encargará de gestionar y manipular la información de todo el sistema.
-**Administrador de Área.** Este usuario podrá cambiar el estatus de las citas a confirmada, finalizada o cancelada.
+* **Alumno.** Este usuario podrá agendar una cita a cualquier área administrativa de la institución.
+* **Administrador.** Este se encargará de gestionar y manipular la información de todo el sistema.
+* **Administrador de Área.** Este usuario podrá cambiar el estatus de las citas a confirmada, finalizada o cancelada.
 
 ## Funcionalidades ⌨️
 * Identificación de usuarios mediante un inicio de sesión.
@@ -25,8 +25,8 @@ Mejorar el proceso de agendación de citas en las diferentes áreas y procesos a
 
 ## Entornos de desarrollo 🛠️
 1. FrontEnd:
-	  - _Angular v10.1.4._ Se utilizará este framework para la creación de un sistema basado en MVC (Modelo, Vista, Controlador).
-	  - _Bootstrap v4.6.0._ A través de este framework, se dará diseño a la interfaz del sistema.
+	- _Angular v10.1.4._ Se utilizará este framework para la creación de un sistema basado en MVC (Modelo, Vista, Controlador).
+	- _Bootstrap v4.6.0._ A través de este framework, se dará diseño a la interfaz del sistema.
     - _CSS3._ Se implementará esta tecnología para complementar los estilos del sistema.
 2. BackEnd:
     - _Node.js v12.16.2._ Este entorno de ejecución multiplataforma de código abierto basado en la capa del servidor del lenguaje de programación JavaScript, se utilizará como servidor del sistema. 
