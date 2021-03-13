@@ -1,0 +1,25 @@
+<div class="wrapper">
+    <h1 class="fadeIn first">Inicia Sesion</h1>
+    <br>
+    <br>
+    <div class="login-form fadeIn first" id="formContent">
+
+        <div class="fadeIn first">
+            <br>
+            <h4>Ingresa tus datos de acceso:</h4>
+            <br>
+        </div>
+
+        <!-- Login Form -->
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <input type="text" formControlName="username" id="login" class="fadeIn second" placeholder="Matricula">
+            <p *ngIf="isValidate('username')" class="alerta-danger">{{ getErrorMessage('username')}}</p>
+            <input type="password" formControlName="password" id="password" class="fadeIn third" placeholder="Password">
+            <p *ngIf="isValidate('password')" class="alerta-danger">{{ getErrorMessage('password')}}</p>
+            <br>
+            <br>
+            <input type="submit" class="btn btn-success" value="Acceder">
+        </form>
+    </div>
+
+</div>
