@@ -10,22 +10,25 @@ class AuthController {
         const {username, password} = req.body;
 
         if(!(username && password)){
-            return res.status(400).json({message: 'Username & Password are required!'});
+            return res.status(400).json({ code: 400, message: 'Username & Password are required!'});
         }
         const userRepository = getRepository(Users);
         let user : Users;
         try {
             user = await userRepository.findOneOrFail({where:{username}});
         } catch (error) {
-            return res.status(400).json({message : 'Username or Password incorrect'});
+            return res.status(400).json({code: 405,message : 'Username or Password incorrect'});
         }
         //Check Password
         if(!user.checkPassword(password)){
-            return res.status(400).json({message: 'Username or Password incorrect'})
+            return res.status(400).json({code: 400, message: 'Username or Password incorrect'})
         }
 
         const token = jwt.sign({ userId: user.id, username: user.username }, config.jwtSecret, { expiresIn: '1h' });
-        res.send( {message: 'OK', token, userId: user.id, role: user.role});
+
+        const usrs = await userRepository.findOneOrFail(user.id,{relations:["typeUser"]});
+
+        res.send( {code: 200 ,message: 'OK', token, role: usrs.typeUser.role, area: usrs.area, mat: usrs.username, userId: user.id});
     }
 }
 

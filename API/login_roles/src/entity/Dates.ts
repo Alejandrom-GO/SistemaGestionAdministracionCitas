@@ -14,6 +14,10 @@ export class Dates {
 
     @Column()
     @IsNotEmpty()
+    mat: number;
+
+    @Column()
+    @IsNotEmpty()
     descripcion: string;
 
     @Column()

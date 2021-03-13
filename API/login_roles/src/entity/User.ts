@@ -1,13 +1,22 @@
-import { OneToMany, Entity, PrimaryGeneratedColumn, Unique, Column , CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { OneToMany, Entity, PrimaryGeneratedColumn,ManyToOne, Unique, Column , CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { MinLength, IsNotEmpty, IsNumber } from 'class-validator';
 import * as bcrypt from 'bcryptjs';
 import {Dates} from './Dates';
+import { TypesUser } from './typesUsers';
 @Entity()
 @Unique(['username'])
 export class Users {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column()
+  @IsNotEmpty()
+  area: string;
+
+  @Column()
+  @IsNotEmpty()
+  name: string;
+  
   @Column()
   @IsNumber()
   @IsNotEmpty()
@@ -21,6 +30,10 @@ export class Users {
   @Column()
   @IsNotEmpty()
   role: string;
+  
+  @ManyToOne(() => TypesUser, typeUser => typeUser.typesU)
+  @IsNotEmpty()
+  typeUser: Users;
 
   @Column()
   @CreateDateColumn()

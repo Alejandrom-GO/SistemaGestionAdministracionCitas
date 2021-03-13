@@ -1,4 +1,4 @@
 export default {
-    jwtSecret: 'UTXJ2021'
+    jwtSecret: 'key@uTXj2o21_citas'
   };
   

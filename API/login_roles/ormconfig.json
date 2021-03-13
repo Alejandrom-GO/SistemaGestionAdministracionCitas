@@ -1,20 +1,20 @@
 {
     "type": "mysql",
-    "host": "localhost",
+    "host": "freedb.tech",
     "port": 3306,
-    "username": "root",
-    "password": "0403",
-    "database": "bd_citas",
+    "username": "freedbtech_administrador",
+    "password": "bd_citas",
+    "database": "freedbtech_DatosCitas",
     "synchronize": true,
     "logging": false,
     "entities": [
-        "src/entity/**/*.ts"
+        "dist/entity/**/*.js"
     ],
     "migrations": [
-        "src/migration/**/*.ts"
+        "dist/migration/**/*.js"
     ],
     "subscribers": [
-        "src/subscriber/**/*.ts"
+        "dist/subscriber/**/*.js"
     ],
     "cli": {
         "entitiesDir": "src/entity",
