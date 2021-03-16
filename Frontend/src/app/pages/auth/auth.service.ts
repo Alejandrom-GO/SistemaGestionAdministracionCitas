@@ -57,6 +57,7 @@ export class AuthService {
     this.loggedIn.next(false);
     this.role.next(null);
     this.userToken.next(null);
+    this.usr.next(null);
     this.router.navigate(['/login']);
 
     // set userisLogged = false
@@ -67,6 +68,7 @@ export class AuthService {
       const isExired = helper.isTokenExpired(user.token);
 
       if (isExired) {
+        window.alert('Tu sesion ha expirado. Vuelve a iniciar sesion');
         this.logout();
       }else{
         this.loggedIn.next(true);
@@ -78,13 +80,13 @@ export class AuthService {
   }
   private saveStorage(user: UserResponse): void {
   // localStorage.setItem('token', token);
-    const { message, code, ... rest} = user;
+    const { message, code, mat, area, userId, ... rest} = user;
     localStorage.setItem('user', JSON.stringify(rest));
   }
   private handlerError(err): Observable<never> {
     let errorMessage = ' An error ocurred retrieving data';
     if (err) {
-      errorMessage = `Error : code ${err.message}`;
+      errorMessage = 'Usuario o password incorrectos';
     }
     window.alert(errorMessage);
     return throwError(errorMessage);

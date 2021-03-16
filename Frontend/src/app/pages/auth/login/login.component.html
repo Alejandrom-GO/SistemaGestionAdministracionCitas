@@ -18,7 +18,7 @@
             <p *ngIf="isValidate('password')" class="alerta-danger">{{ getErrorMessage('password')}}</p>
             <br>
             <br>
-            <input type="submit" class="btn btn-success" value="Acceder">
+            <input [disabled]="loginForm.invalid" type="submit" class="btn btn-success" value="Acceder">
         </form>
     </div>
 

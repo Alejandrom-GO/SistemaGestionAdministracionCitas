@@ -3,9 +3,9 @@
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-    <form class="form-inline w-100 mt-2 mb-2 ml-4 mr-0">
-        <input class="form-control form-control-white ml-4 mr-sm-3 w-75" type="text" placeholder="Buscar por matricula..." aria-label="Search">
-        <button class="btn btn-outline-success my-3 my-sm-0 w-auto" type="submit">Buscar</button>
+    <form class="form-inline w-100 mt-2 mb-2 ml-4 mr-0" [formGroup]="searchForm" (ngSubmit)="onSearch()">
+        <input formControlName="matricula" class="form-control form-control-white ml-4 mr-sm-3 w-75" type="number" placeholder="Buscar por matricula..." aria-label="Search">
+        <a minlength="6" maxlength="6" class="btn btn-outline-success my-3 my-sm-0 w-auto" (click)="onSearch()">Buscar</a>
     </form>
 </nav>
 
@@ -20,7 +20,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/homeArea']">
+                        <a class="nav-link" (click)="onReset()">
                             Mis citas
                         </a>
                     </li>
@@ -60,7 +60,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let date of data">
-                            <td>{{date.user.username}}</td>
+                            <td>{{date.mat}}</td>
                             <td>{{date.fecha | date: "dd-MM-yyyy"}}</td>
                             <td>{{date.forario}}</td>
                             <td>{{date.descripcion}}</td>

@@ -15,12 +15,14 @@ export class AdminComponent implements OnInit, OnDestroy {
 isAdmin = null;
 isLogged = false;
 data: any;
-userRole = JSON.parse(localStorage.getItem('user'));
 private destroy$ = new Subject<any>();
 user: any ;
+searchForm = this.fb.group({
+matricula: ['', [Validators.required, Validators.minLength(6)]]
+});
 
 newForm = this.fb.group({
-  mat: ['', [Validators.required, Validators.minLength(5)]],
+  mat: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
   asunto: ['', [Validators.required, Validators.minLength(5)]],
   descripcion: ['', [Validators.required, Validators.minLength(5)]],
   fecha: ['', [Validators.required, Validators.minLength(5)]],
@@ -45,6 +47,10 @@ newForm = this.fb.group({
     this.destroy$.next({});
     this.destroy$.complete();
   }
+
+  onReset(): void {
+    location.reload();
+  }
   onSave(): void{
     if (this.newForm.invalid) {
           window.alert('Verifica tus datos');
@@ -57,16 +63,27 @@ newForm = this.fb.group({
       location.reload();
     });
     } catch (error) {
-      window.alert('Algo salio mal');
+      window.alert('Algo salio mal, intenta mas tarde...');
     }
-    
   }
-  onEdit(data = {}):void{
+
+  onSearch(): void {
+    if (this.searchForm.invalid) {
+      window.alert('La matricula dede de tener 6 digitos');
+      return;
+    }
+    const id = Object.values(this.searchForm.value);
+    const params = Number(id[0]);
+    this.userService.getById(params).subscribe((res) => {
+      this.data = res;
+    });
+  }
+  onEdit(data = {}): void{
   console.log(data);
   }
 
   deleteDate(id: number): any {
-   if(window.confirm('Do you really want remove')){
+   if (window.confirm('Do you really want remove')){
      this.userService
      .delete(id)
      .pipe(takeUntil(this.destroy$))

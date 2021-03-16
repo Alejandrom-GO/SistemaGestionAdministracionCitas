@@ -16,12 +16,21 @@ export class CheckloginGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authService.isLogged.pipe(
       take(1),
-      map(isLogged => {
+      map((isLogged) => {
+       const usr = this.authService.isUser$;
         // si estoy logueado me devuelve true y si no false
-          if (isLogged === true){
-              return false;
+
+       if (isLogged === true){
+
+        if (usr.role === 'user'){
+          this.router.navigate(['/homeUser']);
+          return false;
+        }else if (usr.role === 'admin'){
+          this.router.navigate(['/homeAdmin']);
+        }
+        return false;
           }
-          return true;
+       return true;
       })
     );
   }

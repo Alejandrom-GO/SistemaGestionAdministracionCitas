@@ -13,7 +13,6 @@ const routes: Routes = [
   { path: 'homeAdmin', loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule),
   canActivate: [ IsAdminGuard]  },
   { path: 'homeArea', loadChildren: () => import('./pages/admin-area/admin-area.module').then(m => m.AdminAreaModule) },
- 
   { path: 'login', loadChildren: () => import('./pages/auth/login/login.module').then(m => m.LoginModule), canActivate: [CheckloginGuard]},
   { path: 'formCita', loadChildren: () => import('./pages/form-cita/form-cita.module').then(m => m.FormCitaModule) },
   {path: '**', redirectTo: 'login' , pathMatch: 'full'}
