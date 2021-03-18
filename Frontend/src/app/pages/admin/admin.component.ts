@@ -148,8 +148,11 @@ export class AdminComponent implements OnInit, OnDestroy {
             Swal.fire({
               icon: 'success',
               title: 'Cita eliminada con éxito',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.onReset();
+              }
             });
-            this.onReset();
           });
       }
     })) 
