@@ -8,7 +8,7 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "server": "cd API/login_roles && npm run dev",
+        "server": "cd ../API/login_roles && npm run dev",
         "dev": "concurrently \"npm run server\" \"npm run start\""
     },
     "private": true,

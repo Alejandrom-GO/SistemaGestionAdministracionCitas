@@ -17,6 +17,7 @@ const helper = new JwtHelperService();
 })
 export class AdminAreaComponent implements OnInit {
   isAdmin = null;
+  descrypt: any;
   newEdit: any = {};
   mydates: any = [];
   feth: any;
@@ -41,11 +42,11 @@ export class AdminAreaComponent implements OnInit {
 
   ngOnInit(): void {
     const onUser = this.authService.isUser$;
-    const descrypt = helper.decodeToken(onUser.token);
+    this.descrypt = helper.decodeToken(onUser.token);
     this.userService.getAll().subscribe(res => {
       this.data = res;
       for (const citasA of this.data){
-        if (citasA.area === descrypt.uA){
+        if (citasA.area === this.descrypt.uA){
           this.mydates.push(citasA);
         }
       }
@@ -94,7 +95,6 @@ export class AdminAreaComponent implements OnInit {
   }
 
   onSearch(): void {
-    console.log(this.searchForm.value);
     if (this.searchForm.invalid) {
       Swal.fire({
         icon: 'error',
@@ -104,9 +104,17 @@ export class AdminAreaComponent implements OnInit {
       return;
     }
     const id = Object.values(this.searchForm.value);
+    console.log(id);
     const params = Number(id[0]);
+    console.log(params);
     this.userService.getById(params).subscribe((res) => {
       this.data = res;
+      for (const citasA of this.data){
+        if (citasA.area === this.descrypt.uA){
+          this.mydates = [];
+          this.mydates.push(citasA);
+        }
+    }
     });
   }
 
