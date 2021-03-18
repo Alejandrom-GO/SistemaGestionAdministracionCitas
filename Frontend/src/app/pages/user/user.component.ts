@@ -134,6 +134,10 @@ export class UserComponent implements OnInit {
             Swal.fire({
               icon: 'success',
               title: 'Cita eliminada con éxito',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.onReset();
+              }
             });
             this.userService.getAll().subscribe((user) => {
               user.sort();
