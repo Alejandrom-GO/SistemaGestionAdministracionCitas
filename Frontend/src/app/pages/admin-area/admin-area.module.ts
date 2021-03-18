@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { AdminAreaRoutingModule } from './admin-area-routing.module';
 import { AdminAreaComponent } from './admin-area.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AdminAreaRoutingModule,
     FormCitaModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AdminAreaModule { }

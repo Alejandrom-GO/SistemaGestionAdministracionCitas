@@ -15,8 +15,8 @@ export class IsUserGuard implements CanActivate {
     return this.authService.isAdmin$.pipe(
       take(1),
       map( role => {
-        if (role !== 'user'){
-          if (role === 'admin'){
+        if (Number(role) !== 2){
+          if (Number(role) === 1){
             this.router.navigate(['/homeAdmin']);
             return false;
           }

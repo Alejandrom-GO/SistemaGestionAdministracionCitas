@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscripcions.add(
     this.authService.login(formValue).subscribe((res) => {
       const Ures = this.authService.isUser$;
-      if (res && Ures.role === 'admin'){
+      if (res && Ures.role === 1){
         this.router.navigate(['homeAdmin']);
-      }else if (res && Ures.role === 'user'){
+      }else if (res && Ures.role === 2){
         this.router.navigate(['homeUser']);
-      }else if (res && Ures.role === 'adminArea'){
+      }else if (res && Ures.role === 3){
         this.router.navigate(['homeArea']);
       }
     }

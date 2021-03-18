@@ -22,10 +22,10 @@ export class CheckloginGuard implements CanActivate {
 
        if (isLogged === true){
 
-        if (usr.role === 'user'){
+        if (usr.role === 1){
           this.router.navigate(['/homeUser']);
           return false;
-        }else if (usr.role === 'admin'){
+        }else if (usr.role === 2){
           this.router.navigate(['/homeAdmin']);
         }
         return false;

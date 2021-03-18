@@ -2,11 +2,7 @@
     <a class="navbar-brand col-md-3 col-lg-2 mr-3 px-3" href="#">Panel Estudiante</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
-    <form class="form-inline w-100 mt-2 mb-2 ml-4 mr-0">
-        <input class="form-control form-control-white ml-4 mr-sm-3 w-75" type="text" placeholder="Buscar por matricula..." aria-label="Search">
-        <button class="btn btn-outline-success my-3 my-sm-0 w-auto" type="submit">Buscar</button>
-    </form>
+  </button> >
 </nav>
 
 <div class="container-fluid">
@@ -20,7 +16,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/homeUser']">
+                        <a class="nav-link" (click)="onReset()">
                             Mis citas
                         </a>
                     </li>
@@ -59,8 +55,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let date of data">
-                            <td>{{date.user.username}}</td>
+                        <tr *ngFor="let date of mydates">
+                            <td>{{date.mat}}</td>
                             <td>{{date.fecha | date: "dd-MM-yyyy"}}</td>
                             <td>{{date.forario}}</td>
                             <td>{{date.descripcion}}</td>
@@ -96,9 +92,8 @@
                     <div class="form-row">
                         <div class="form-group col-md-5">
                             <label for="inputMatricula">Matrícula:</label>
-                            <input type="number" class="form-control" id="inputMatricula" placeholder="Ingrese su matrícula">
-                            <span><small>* Campo Obligatorio</small></span>
-
+                            <input maxlength="5" formControlName="mat" type="number" class="form-control" id="inputMatricula" placeholder="Ingrese su matrícula">
+                            <p *ngIf="isValidate('mat')" class="alerta-danger">{{ getErrorMessage('mat')}}</p>
                         </div>
                         <div class="form-group col-md-7">
                             <label for="inputNombre">Asunto:</label>
@@ -124,7 +119,7 @@
                                         <option>2:00 a.m.</option>
                                         <option>2:30 a.m.</option>
                                     </select>
-                            <p *ngIf="isValidate('forario')" class="alerta-danger">{{ getErrorMessage('forario')}}</p>
+                            <p *ngIf="isValidate('forario')" class="alerta-danger">{{ getErrorMessage('forario)}}</p>
                         </div>
                     </div>
 

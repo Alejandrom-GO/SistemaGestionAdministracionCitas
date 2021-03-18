@@ -33,7 +33,7 @@ export class UsersService {
 
   update(dateId: number, date: Date): Observable<Date> {
     return this.http
-      .patch<Date>(`${environment.API_URL}api/${dateId}`, date)
+      .put<Date>(`${environment.API_URL}api/${dateId}`, date)
       .pipe(catchError(this.handlerError));
   }
 
@@ -44,11 +44,10 @@ export class UsersService {
   }
 
   handlerError(error): Observable<never> {
-    let errorMessage = 'Error unknown';
-    if (error) {
-      errorMessage = `Error ${error.message}`;
+    const errorMessage = error.error.message;
+    if (error.error.code === 404) {
+      window.alert(errorMessage);
     }
-    window.alert(errorMessage);
     return throwError(errorMessage);
   }
 }

@@ -62,17 +62,19 @@ export class AuthService {
 
     // set userisLogged = false
   }
+  
   private checkToken(): void {
     const user = JSON.parse(localStorage.getItem('user')) || null;
     if (user){
       const isExired = helper.isTokenExpired(user.token);
+      const descrypt = helper.decodeToken(user.token);
 
       if (isExired) {
         window.alert('Tu sesion ha expirado. Vuelve a iniciar sesion');
         this.logout();
       }else{
         this.loggedIn.next(true);
-        this.role.next(user.role);
+        this.role.next(descrypt.uR);
         this.userToken.next(user.token);
         this.usr.next(user);
       }
@@ -80,9 +82,10 @@ export class AuthService {
   }
   private saveStorage(user: UserResponse): void {
   // localStorage.setItem('token', token);
-    const { message, code, mat, area, userId, ... rest} = user;
+    const { message, code, mat, area, userId, role, ... rest} = user;
     localStorage.setItem('user', JSON.stringify(rest));
   }
+  
   private handlerError(err): Observable<never> {
     let errorMessage = ' An error ocurred retrieving data';
     if (err) {
