@@ -39,28 +39,33 @@ DatesController.getById = (req, res) => __awaiter(void 0, void 0, void 0, functi
         return res.status(400).json({ code: 400, message: 'Date not found' });
     }
     const datesRepository = typeorm_1.getRepository(Dates_1.Dates);
-    const userRepository = typeorm_1.getRepository(User_1.Users);
     try {
-        const date = yield datesRepository.findOneOrFail(id, { relations: ["user"] });
-        res.send(date);
+        const date = yield datesRepository.find({ mat: Number(id) });
+        if (Object.entries(date).length === 0) {
+            res.status(204).json({ message: 'Sin resultados' });
+        }
+        else {
+            res.send(date);
+        }
     }
     catch (e) {
-        res.status(404).json({ code: 404, message: 'Not result' });
+        res.status(404).json({ code: 404, message: 'Ocurrio un problema' });
     }
 });
 DatesController.newDate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { asunto, descripcion, forario, fecha, area, estado, userId } = req.body;
+    const { asunto, descripcion, forario, fecha, area, estado, mat } = req.body;
     const date = new Dates_1.Dates();
     const userRepository = typeorm_1.getRepository(User_1.Users);
     try {
-        const user = yield userRepository.findOneOrFail(userId);
+        const user = yield userRepository.findOneOrFail({ username: mat });
         date.asunto = asunto;
         date.descripcion = descripcion;
         date.forario = forario;
         date.fecha = fecha;
         date.area = area;
         date.estado = estado;
-        date.user = userId;
+        date.user = user;
+        date.mat = mat;
     }
     catch (e) {
         res.status(404).json({ code: 404, message: 'User not found' });
@@ -84,21 +89,23 @@ DatesController.newDate = (req, res) => __awaiter(void 0, void 0, void 0, functi
 DatesController.edit = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let date;
     const { id } = req.params;
-    const { asunto, descripcion, forario, fecha, area, estado, userId } = req.body;
+    const { asunto, descripcion, forario, fecha, area, estado, mat } = req.body;
+    const userRepository = typeorm_1.getRepository(User_1.Users);
     const dateRepository = typeorm_1.getRepository(Dates_1.Dates);
     // Try get user
     try {
         date = yield dateRepository.findOneOrFail(id);
+        const user = yield userRepository.findOneOrFail({ username: mat });
         date.asunto = asunto;
         date.descripcion = descripcion;
         date.forario = forario;
         date.fecha = fecha;
         date.area = area;
         date.estado = estado;
-        date.user = userId;
+        date.user = user;
     }
     catch (e) {
-        return res.status(404).json({ code: 404, message: 'Date not found' });
+        return res.status(404).json({ code: 404, message: 'Date or User not found' });
     }
     const validationOpt = { validationError: { target: false, value: false } };
     const errors = yield class_validator_1.validate(date, validationOpt);

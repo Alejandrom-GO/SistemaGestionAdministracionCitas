@@ -4,22 +4,22 @@ import { Users } from '../entity/User';
 
 export const checkRole = (roles: Array<string>) => {
   return async (req: Request, res: Response, next: NextFunction) => {
-    const { userId } = res.locals.jwtPayload;
+    const { uI } = res.locals.jwtPayload;
+    
     const userRepository = getRepository(Users);
     let user: Users;
 
     try {
-      user = await userRepository.findOneOrFail(userId);
+      user = await userRepository.findOneOrFail(uI);
     } catch (e) {
       return res.status(401).json({ message: 'Not Authorized' });
     }
-
-    //Check
+//check
     const { role } = user;
     if (roles.includes(role)) {
       next();
     } else {
-      res.status(401).json({ message: 'Not Authorized' });
+      res.status(401).json({ message: 'Not Authorized role' });
     }
   };
 };

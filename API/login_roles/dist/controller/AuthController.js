@@ -23,7 +23,7 @@ AuthController.login = (req, res) => __awaiter(void 0, void 0, void 0, function*
     const userRepository = typeorm_1.getRepository(User_1.Users);
     let user;
     try {
-        user = yield userRepository.findOneOrFail({ where: { username } });
+        user = yield userRepository.findOneOrFail({ where: { username }, relations: ["typeUser"] });
     }
     catch (error) {
         return res.status(400).json({ code: 405, message: 'Username or Password incorrect' });
@@ -32,9 +32,9 @@ AuthController.login = (req, res) => __awaiter(void 0, void 0, void 0, function*
     if (!user.checkPassword(password)) {
         return res.status(400).json({ code: 400, message: 'Username or Password incorrect' });
     }
-    const token = jwt.sign({ userId: user.id, username: user.username }, config_1.default.jwtSecret, { expiresIn: '1h' });
+    const token = jwt.sign({ uI: user.id, uN: user.username, uR: user.typeUser.id, uA: user.area }, config_1.default.jwtSecret, { expiresIn: '1h' });
     const usrs = yield userRepository.findOneOrFail(user.id, { relations: ["typeUser"] });
-    res.send({ code: 200, message: 'OK', token, role: usrs.typeUser.role, area: usrs.area, mat: usrs.username });
+    res.send({ code: 200, message: 'OK', token, role: usrs.typeUser.id, area: usrs.area, mat: usrs.username, userId: user.id });
 });
 exports.default = AuthController;
 //# sourceMappingURL=AuthController.js.map

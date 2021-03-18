@@ -1,10 +1,10 @@
 {
     "type": "mysql",
-    "host": "freedb.tech",
+    "host": "localhost",
     "port": 3306,
-    "username": "freedbtech_administrador",
-    "password": "bd_citas",
-    "database": "freedbtech_DatosCitas",
+    "username": "root",
+    "password": "0403",
+    "database": "bd_citas",
     "synchronize": true,
     "logging": false,
     "entities": [
