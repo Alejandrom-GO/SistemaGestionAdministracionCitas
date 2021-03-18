@@ -10,13 +10,13 @@ const router = Router();
 router.get('/dates-all', [checkJwt, checkRole(['admin', 'user', 'adminArea'])],  DatesController.getAll);
 
 //crear cita
-router.post('/', [checkJwt, checkRole(['admin', 'user'])],  DatesController.newDate);
+router.post('/', [checkJwt, checkRole(['admin', 'user','adminArea'])],  DatesController.newDate);
 
 //buscarCita
 router.get('/:id', [checkJwt, checkRole(['admin', 'user', 'adminArea'])], DatesController.getById);
 
 //editarcitas
-router.patch('/:id', [checkJwt, checkRole(['admin'])], DatesController.edit);
+router.put('/:id', [checkJwt, checkRole(['admin','adminArea'])], DatesController.edit);
 
 //borrarCitas
 router.delete('/:id', [checkJwt, checkRole(['admin', 'user', 'adminArea'])], DatesController.delete);

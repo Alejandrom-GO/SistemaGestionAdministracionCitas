@@ -24,19 +24,22 @@ export class DatesController {
 
   static getById = async (req: Request, res: Response) => {
     const { id } = req.params;
-
     if(!id){
       return res.status(400).json({ code: 400, message: 'Date not found'});
     }
 
     const datesRepository = getRepository(Dates);
-    const userRepository = getRepository(Users);
 
     try {
-      const date = await datesRepository.findOneOrFail(id,{relations:["user"]});
-      res.send(date);
+      const date = await datesRepository.find({mat:Number(id)});
+      if(Object.entries(date).length === 0) {
+        res.status(204).json({message: 'Sin resultados'});
+      }else{
+        res.send(date);
+      }
+     
     } catch (e) {
-      res.status(404).json({code:404, message: 'Not result' });
+      res.status(404).json({code:404, message: 'Ocurrio un problema' });
     }
   }
 
@@ -44,7 +47,6 @@ export class DatesController {
     const { asunto, descripcion, forario,fecha,area,estado,mat } = req.body;
     const date = new Dates();
     const userRepository = getRepository(Users);
-   
     try {
               const user = await userRepository.findOneOrFail({username:mat});
               date.asunto = asunto;

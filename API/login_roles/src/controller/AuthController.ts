@@ -15,7 +15,7 @@ class AuthController {
         const userRepository = getRepository(Users);
         let user : Users;
         try {
-            user = await userRepository.findOneOrFail({where:{username}});
+            user = await userRepository.findOneOrFail({where:{username},relations:["typeUser"]},);
         } catch (error) {
             return res.status(400).json({code: 405,message : 'Username or Password incorrect'});
         }
@@ -24,11 +24,11 @@ class AuthController {
             return res.status(400).json({code: 400, message: 'Username or Password incorrect'})
         }
 
-        const token = jwt.sign({ userId: user.id, username: user.username }, config.jwtSecret, { expiresIn: '1h' });
+        const token = jwt.sign({ uI: user.id, uN: user.username, uR: user.typeUser.id, uA: user.area }, config.jwtSecret, { expiresIn: '1h' });
 
         const usrs = await userRepository.findOneOrFail(user.id,{relations:["typeUser"]});
 
-        res.send( {code: 200 ,message: 'OK', token, role: usrs.typeUser.role, area: usrs.area, mat: usrs.username, userId: user.id});
+        res.send( {code: 200 ,message: 'OK', token, role: usrs.typeUser.id, area: usrs.area, mat: usrs.username, userId: user.id});
     }
 }
 

@@ -27,6 +27,11 @@ __decorate([
 __decorate([
     typeorm_1.Column(),
     class_validator_1.IsNotEmpty(),
+    __metadata("design:type", Number)
+], Dates.prototype, "mat", void 0);
+__decorate([
+    typeorm_1.Column(),
+    class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
 ], Dates.prototype, "descripcion", void 0);
 __decorate([

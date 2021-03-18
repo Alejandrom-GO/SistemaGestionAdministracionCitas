@@ -14,22 +14,22 @@ const typeorm_1 = require("typeorm");
 const User_1 = require("../entity/User");
 const checkRole = (roles) => {
     return (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-        const { userId } = res.locals.jwtPayload;
+        const { uI } = res.locals.jwtPayload;
         const userRepository = typeorm_1.getRepository(User_1.Users);
         let user;
         try {
-            user = yield userRepository.findOneOrFail(userId);
+            user = yield userRepository.findOneOrFail(uI);
         }
         catch (e) {
             return res.status(401).json({ message: 'Not Authorized' });
         }
-        //Check
+        //check
         const { role } = user;
         if (roles.includes(role)) {
             next();
         }
         else {
-            res.status(401).json({ message: 'Not Authorized' });
+            res.status(401).json({ message: 'Not Authorized role' });
         }
     });
 };
