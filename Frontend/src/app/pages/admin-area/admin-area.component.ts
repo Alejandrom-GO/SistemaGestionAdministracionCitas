@@ -7,6 +7,8 @@ import * as moment from 'moment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import Swal from 'sweetalert2';
+
 const helper = new JwtHelperService();
 @Component({
   selector: 'app-admin-area',
@@ -62,17 +64,29 @@ export class AdminAreaComponent implements OnInit {
   }
   onSave(): void {
     if (this.newForm.invalid) {
-      window.alert('Verifica tus datos');
+      Swal.fire({
+        icon: 'info',
+        title: 'Verifica tus datos',
+        confirmButtonText: 'OK'
+      });
       return;
     }
     try {
       const formValue = this.newForm.value;
       this.userService.new(formValue).subscribe((res: any) => {
-        window.alert('Cita creada con exito');
+        Swal.fire({
+          icon: 'success',
+          title: 'Cita Exitosa',
+          text: 'Se ha agendado la cita correctamente',
+        });
         location.reload();
       });
     } catch (error) {
-      window.alert('Algo salio mal, intenta mas tarde...');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hubo un error, intente nuevamente',
+      });
     }
   }
 
@@ -103,23 +117,39 @@ export class AdminAreaComponent implements OnInit {
       this.onReset();
     });
   }
-
+  
   deleteDate(id: number): any {
-    if (window.confirm('Desea eliminar la cita')) {
-      this.userService
-        .delete(id)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe((res) => {
-          window.alert('Cita Eliminada');
-          this.userService.getAll().subscribe((user) => {
-            user.sort();
-            user.reverse();
-            this.data = user;
+    if (Swal.fire({
+      title: '¿Estás seguro de eliminar esta cita?',
+      text: "Si eliminas esta cita, no podras recuperarla más tarde",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userService
+          .delete(id)
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((res) => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Cita eliminada con éxito',
+            });
+            this.userService.getAll().subscribe((user) => {
+              user.sort();
+              user.reverse();
+              this.data = user;
+            });
           });
-
-        });
+      }
+    })) 
+    {
     }
   }
+  
   onLogout(): void {
     this.authService.logout();
   }
