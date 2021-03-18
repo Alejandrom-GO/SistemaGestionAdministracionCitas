@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <h1 class="fadeIn first">Inicia Sesion</h1>
+    <h1 class="fadeIn first">Inicia Sesión</h1>
     <br>
     <br>
     <div class="login-form fadeIn first" id="formContent">
@@ -12,7 +12,7 @@
 
         <!-- Login Form -->
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-            <input type="text" formControlName="username" id="login" class="fadeIn second" placeholder="Matricula">
+            <input type="text" formControlName="username" id="login" class="fadeIn second" placeholder="Matrícula">
             <p *ngIf="isValidate('username')" class="alerta-danger">{{ getErrorMessage('username')}}</p>
             <input type="password" formControlName="password" id="password" class="fadeIn third" placeholder="Password">
             <p *ngIf="isValidate('password')" class="alerta-danger">{{ getErrorMessage('password')}}</p>
