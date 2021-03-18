@@ -113,7 +113,13 @@ export class AdminAreaComponent implements OnInit {
     const dateE = this.newEdit;
     const idEdit = this.newEdit.id;
     this.userService.update(idEdit, dateE).subscribe((res: any) => {
-      window.alert(res.message);
+      Swal.fire({
+        icon: 'success',
+        title: 'Cita Editada',
+        text: 'Se ha editado la cita correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.onReset();
     });
   }

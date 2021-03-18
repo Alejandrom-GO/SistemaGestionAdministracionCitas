@@ -110,6 +110,13 @@ export class AdminComponent implements OnInit, OnDestroy {
     const idEdit = this.newEdit.id;
 
     this.userService.update(idEdit, dateE).subscribe((res: any) => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Cita Editada',
+        text: 'Se ha editado la cita correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.onReset();
     });
   }
