@@ -57,7 +57,7 @@ Mejorar el proceso de agendación de citas en las diferentes áreas y procesos a
 
 ## Diseño de Base de Datos 📑
 
-![image](https://drive.google.com/uc?export=view&id=1R8g-mj8ElMKDlTFOdwoyHCUrFjZnzEUI)
+![image](https://drive.google.com/uc?export=view&id=1oG0io5UlTOIm_eAWtPThq7DWrCPs6xOh)
 
 ## Backend ⚙️
 
