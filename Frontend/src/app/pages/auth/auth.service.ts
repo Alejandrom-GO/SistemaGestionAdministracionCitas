@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { UserResponse, User, Roles } from '../../shared/models/user.interface';
 import { catchError, map } from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import Swal from 'sweetalert2';
 
 const helper = new JwtHelperService();
 
@@ -70,7 +71,10 @@ export class AuthService {
       const descrypt = helper.decodeToken(user.token);
 
       if (isExired) {
-        window.alert('Tu sesion ha expirado. Vuelve a iniciar sesion');
+        Swal.fire({
+          icon: 'warning',
+          title: 'Tu sesion ha expirado',
+        });
         this.logout();
       }else{
         this.loggedIn.next(true);
@@ -89,9 +93,11 @@ export class AuthService {
   private handlerError(err): Observable<never> {
     let errorMessage = ' An error ocurred retrieving data';
     if (err) {
-      errorMessage = 'Usuario o password incorrectos';
+      Swal.fire({
+        icon: 'error',
+        title: 'Matrícula o contraseña incorrectos',
+      });
     }
-    window.alert(errorMessage);
     return throwError(errorMessage);
   }
 

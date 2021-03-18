@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
  
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,11 @@ export class UsersService {
   handlerError(error): Observable<never> {
     const errorMessage = error.error.message;
     if (error.error.code === 404) {
-      window.alert(errorMessage);
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: errorMessage,
+      });
     }
     return throwError(errorMessage);
   }
