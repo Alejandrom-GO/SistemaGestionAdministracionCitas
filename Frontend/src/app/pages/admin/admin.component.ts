@@ -73,9 +73,12 @@ export class AdminComponent implements OnInit, OnDestroy {
         Swal.fire({
           icon: 'success',
           title: 'Cita Exitosa',
-          text: 'Se ha agendado la cita correctamente',
+          text: 'Se ha agendado la cita correctamente'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.onReset();
+          }
         });
-        location.reload();
       });
     } catch (error) {
       Swal.fire({
@@ -88,7 +91,11 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   onSearch(): void {
     if (this.searchForm.invalid) {
-      window.alert('La matricula dede de tener 6 digitos');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hubo un error, la matrícula debe contener 6 dígitos',
+      });
       return;
     }
     const id = Object.values(this.searchForm.value);
@@ -114,10 +121,11 @@ export class AdminComponent implements OnInit, OnDestroy {
         icon: 'success',
         title: 'Cita Editada',
         text: 'Se ha editado la cita correctamente',
-        showConfirmButton: false,
-        timer: 1500
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.onReset();
+        }
       });
-      this.onReset();
     });
   }
 
@@ -141,11 +149,7 @@ export class AdminComponent implements OnInit, OnDestroy {
               icon: 'success',
               title: 'Cita eliminada con éxito',
             });
-            this.userService.getAll().subscribe((user) => {
-              user.sort();
-              user.reverse();
-              this.data = user;
-            });
+            this.onReset();
           });
       }
     })) 

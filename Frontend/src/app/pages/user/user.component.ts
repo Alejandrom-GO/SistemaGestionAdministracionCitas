@@ -76,9 +76,12 @@ export class UserComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: 'Cita Exitosa',
-          text: 'Se ha agendado la cita correctamente',
+          text: 'Se ha agendado la cita correctamente'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.onReset();
+          }
         });
-        location.reload();
       });
     } catch (error) {
       Swal.fire({
