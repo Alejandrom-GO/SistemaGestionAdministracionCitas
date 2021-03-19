@@ -20,11 +20,12 @@ export class UserComponent implements OnInit {
   data: any ;
   mydates: any = [];
   user: any;
+  descrypt: any ;
   searchForm = this.fb.group({
     matricula: ['', [Validators.required, Validators.minLength(6)]]
   });
   newForm = this.fb.group({
-    mat: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+    mat: ['', [ Validators.minLength(5), Validators.maxLength(5)]],
     asunto: ['', [Validators.required, Validators.minLength(5)]],
     descripcion: ['', [Validators.required, Validators.minLength(5)]],
     fecha: [[Validators.required, Validators.minLength(5)]],
@@ -41,17 +42,18 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     // tslint:disable-next-line:no-unused-expression
     const onUser = this.authService.isUser$;
-    const descrypt = helper.decodeToken(onUser.token);
+    this.descrypt = helper.decodeToken(onUser.token);
     this.userService.getAll().subscribe(res => {
       this.data = res;
       for (const cita of this.data) {
-        if (cita.mat === descrypt.uN) {
+        if (cita.mat === this.descrypt.uN) {
           this.mydates.push(cita);
         }
       }
     });
   }
 
+  // tslint:disable-next-line:use-lifecycle-interface
   ngOnDestroy(): void {
     this.destroy$.next({});
     this.destroy$.complete();
@@ -72,6 +74,7 @@ export class UserComponent implements OnInit {
     }
     try {
       const formValue = this.newForm.value;
+      formValue.mat = this.descrypt.uN;
       this.userService.new(formValue).subscribe((res: any) => {
         Swal.fire({
           icon: 'success',
@@ -91,11 +94,6 @@ export class UserComponent implements OnInit {
       });
     }
   }
-
-  onEdit(data = {}): void {
-    console.log(data);
-  }
-
   onLogout(): void {
     this.authService.logout();
   }
