@@ -34,31 +34,6 @@ Mejorar el proceso de agendación de citas en las diferentes áreas y procesos a
 3. Base de Datos:
     - _MySQL v8.0.20._ Usaremos el tipo de base de datos SQL, pues esta nos brindará funcionalidades adicionales al desarrollo de nuestro proyecto y se adaptará adecuadamente al tipo de proyecto. 
 
-## Wireframe 📌
-> Inicio de sesión.
-
-![image](https://drive.google.com/uc?export=view&id=1ORNiQB-TPporl1NtMmNUE346sN6znrmW)
-
-> Formulario para agendación de citas.
-
-![image](https://drive.google.com/uc?export=view&id=1_S8ush6yEWtA9cuws8uYq6iYmpISb1y7)
-
-> Listado de citas.
-
-![image](https://drive.google.com/uc?export=view&id=1aAxq5x-C5sSiHjXuh_lU5XUU_Edk8zF7)
-
-> Panel administrativo por área.
-
-![image](https://drive.google.com/uc?export=view&id=1xL_NoQ4eENbZnJFqY-bbkJ0TP7uJqk9g)
-
-> Panel administrativo de todo el sistema. 
-
-![image](https://drive.google.com/uc?export=view&id=1GROqeZtBbgYoI2CCtdwP9r67MT79hkU4)
-
-## Diseño de Base de Datos 📑
-
-![image](https://drive.google.com/uc?export=view&id=1oG0io5UlTOIm_eAWtPThq7DWrCPs6xOh)
-
 ## Backend ⚙️
 
 ![image](https://drive.google.com/uc?export=view&id=1MF6n5P9UTbkY0R-cvYGkiPCgwNelruVv)
